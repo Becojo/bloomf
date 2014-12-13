@@ -18,7 +18,7 @@
 (defn contains?
   "Returns false if n is not in the Bloom filter"
   [{:keys [value size hashers]} x]
-  (empty? (drop-while #(bit-test value (mod (% x) size)) hashers)))
+   (empty? (drop-while #(bit-test value (mod (% x) size)) hashers)))
 
 (defn intersection
   "Returns a Bloom filter that is the intersection of its inputs"
@@ -39,7 +39,7 @@
 (defn shrink
   "Split the Bloom filter in half"
   [{:keys [value size] :as bloom}]
-   (let [half-size (/ size 2)]
+   (let [half-size (quot size 2)]
      (assoc bloom
        :size half-size
        :value (bit-or
