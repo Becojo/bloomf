@@ -8,7 +8,7 @@
 
 (def choose-filter-size (gen/choose 5 500))
 
-(defspec empty
+(defspec empty-stays-empty
   (prop/for-all [xs (gen/vector gen/int) n choose-filter-size]
     (let [f (bf/make n [hash])]
       (every? #(not (bf/contains? f %)) xs))))
